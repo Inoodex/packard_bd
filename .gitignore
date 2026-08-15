@@ -1,0 +1,50 @@
+# Laravel
+/vendor/
+/node_modules/
+/public/build/
+/public/hot
+/storage/*.key
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/logs/*
+/bootstrap/cache/*
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Database / documentation
+*.sql
+*.md
+
+# PHPUnit
+.phpunit.result.cache
+
+# Composer
+composer.phar
+
+# npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Laravel Telescope
+/.telescope/
