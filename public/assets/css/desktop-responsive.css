@@ -1,0 +1,39 @@
+/* Desktop & Laptop responsive tweaks */
+
+/* Larger container widths for laptop and desktop */
+@media (min-width: 992px) {
+  .container {
+    max-width: 980px;
+  }
+  .main-wrapper .page-wrapper {
+    padding: 28px 32px;
+  }
+  .logo-dark, .logo-light {
+    max-width: 160px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+  .main-wrapper .page-wrapper {
+    padding: 32px 48px;
+  }
+  .sidebar {
+    width: 260px;
+  }
+  .page-header .page-title {
+    font-size: 20px;
+  }
+}
+
+/* Table responsiveness improvements */
+@media (min-width: 992px) {
+  .table-responsive { overflow-x: visible; }
+}
+
+/* Slightly larger base font for desktop */
+@media (min-width: 1200px) {
+  html { font-size: 16px; }
+}
