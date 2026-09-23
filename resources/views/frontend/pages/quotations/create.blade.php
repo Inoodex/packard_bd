@@ -588,10 +588,11 @@
                 const taxPercent = Math.max(0, parseFloat(taxInput?.value || 0) || 0);
                 const installationCharge = Math.max(0, parseFloat(installationInput.value) || 0);
                 const roundOff = Math.max(0, parseFloat(roundOffInput.value) || 0);
-                const base = Math.max(0, subtotal - overallDiscount);
-                const vat = base * (vatPercent / 100);
-                const tax = base * (taxPercent / 100);
-                const grand = base + vat + tax + installationCharge - roundOff;
+                const totalAfterDiscount = Math.max(0, subtotal - overallDiscount);
+                const tax = totalAfterDiscount * (taxPercent / 100);
+                const netTotal = Math.max(0, totalAfterDiscount + installationCharge + tax - roundOff);
+                const vat = netTotal * (vatPercent / 100);
+                const grand = netTotal + vat;
 
                 subTotalEl.textContent = subtotal.toFixed(2);
                 grandTotalEl.textContent = grand.toFixed(2);

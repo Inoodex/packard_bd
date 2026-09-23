@@ -128,40 +128,54 @@
                                                 </tr>
                                                 @if ($quotation->discount_amount > 0)
                                                     <tr>
-                                                        <td colspan="3" class="text-end"><strong>Discount:</strong></td>
+                                                        <td colspan="3" class="text-end"><strong>Discount ({{ (float) ($quotation->discount_percent ?? 0) }}%):</strong></td>
                                                         <td colspan="2" class="text-end"><strong>-
                                                                 {{ number_format($quotation->discount_amount, 2) }}</strong>
                                                         </td>
                                                     </tr>
                                                 @endif
-                                                <tr>
-                                                    <td colspan="3" class="text-end"><strong>VAT (%):</strong></td>
-                                                    <td colspan="2" class="text-end">
-                                                        <strong>{{ number_format((float) ($quotation->vat_percent ?? 0), 2) }}%</strong>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="3" class="text-end"><strong>VAT Amount:</strong></td>
-                                                    <td colspan="2" class="text-end">
-                                                        <strong>
-                                                            {{ number_format((float) ($quotation->vat_amount ?? 0), 2) }}</strong>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="3" class="text-end"><strong>Installation
-                                                            Charge:</strong></td>
-                                                    <td colspan="2" class="text-end">
-                                                        <strong>
-                                                            {{ number_format((float) ($quotation->installation_charge ?? 0), 2) }}</strong>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="3" class="text-end"><strong>Round Off (-):</strong></td>
-                                                    <td colspan="2" class="text-end">
-                                                        <strong>-
-                                                            {{ number_format((float) ($quotation->round_off ?? 0), 2) }}</strong>
-                                                    </td>
-                                                </tr>
+                                                @if (($quotation->installation_charge ?? 0) > 0)
+                                                    <tr>
+                                                        <td colspan="3" class="text-end"><strong>Installation Charge:</strong></td>
+                                                        <td colspan="2" class="text-end">
+                                                            <strong>
+                                                                {{ number_format((float) ($quotation->installation_charge ?? 0), 2) }}</strong>
+                                                        </td>
+                                                    </tr>
+                                                @endif
+                                                @if (($quotation->tax_amount ?? 0) > 0)
+                                                    <tr>
+                                                        <td colspan="3" class="text-end"><strong>AIT ({{ (float) ($quotation->tax_percent ?? 0) }}%):</strong></td>
+                                                        <td colspan="2" class="text-end">
+                                                            <strong>
+                                                                {{ number_format((float) ($quotation->tax_amount ?? 0), 2) }}</strong>
+                                                        </td>
+                                                    </tr>
+                                                @endif
+                                                @if (($quotation->round_off ?? 0) > 0)
+                                                    <tr>
+                                                        <td colspan="3" class="text-end"><strong>Round Off (-):</strong></td>
+                                                        <td colspan="2" class="text-end">
+                                                            <strong>-
+                                                                {{ number_format((float) ($quotation->round_off ?? 0), 2) }}</strong>
+                                                        </td>
+                                                    </tr>
+                                                @endif
+                                                @if (($quotation->vat_amount ?? 0) > 0)
+                                                    <tr>
+                                                        <td colspan="3" class="text-end"><strong>Net Total:</strong></td>
+                                                        <td colspan="2" class="text-end">
+                                                            <strong>{{ number_format((float) ($quotation->total_amount - ($quotation->vat_amount ?? 0)), 2) }}</strong>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3" class="text-end"><strong>VAT ({{ (float) ($quotation->vat_percent ?? 0) }}%):</strong></td>
+                                                        <td colspan="2" class="text-end">
+                                                            <strong>
+                                                                {{ number_format((float) ($quotation->vat_amount ?? 0), 2) }}</strong>
+                                                        </td>
+                                                    </tr>
+                                                @endif
                                                 <tr class="table-primary">
                                                     <td colspan="3" class="text-end"><strong>Total Amount:</strong></td>
                                                     <td colspan="2" class="text-end"><strong>
